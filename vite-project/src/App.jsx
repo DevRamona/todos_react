@@ -63,7 +63,7 @@ function App() {
             </button>
           </form>
         </div>
-        <div className="mt-4">{result}</div>
+        <div className="mt-4 mb-2">{result}</div>
       </section>
     </>
   );
