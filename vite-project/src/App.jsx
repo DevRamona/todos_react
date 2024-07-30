@@ -4,28 +4,36 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import Card from "./Components/Card";
 import { Car } from "lucide-react";
- const result = todos.map((item, index) => (<Card key = {item} text = {item} checker={true} id={index}/>))
+
 function App() {
-  
   const [todo, setTodo] = useState("");
-  const [todos, setTodos] = useState([])
+  const [todos, setTodos] = useState([]);
+  const result = todos.map((item, index) => (
+    <Card
+      key={item}
+      text={item}
+      checker={true}
+      id={index}
+      delete={() => handleDelete(index)}
+    />
+  ));
 
   function handleSubmit(e) {
     e.preventDefault();
-    if(todo) {
-      setTodos([...todos,todo])
-      setTodo("")
+    if (todo) {
+      setTodos([...todos, todo]);
+      setTodo("");
     }
   }
 
   function handleChange(e) {
     setTodo(e.target.value);
-
   }
-
+  function handleDelete(id) {
+    setTodos(todos.filter((item, index) => index !== id));
+  }
   return (
     <>
-    
       <section>
         <h1 className="text-blue-100 text-5xl font-bold text-center">todos</h1>
         <div>
@@ -49,10 +57,7 @@ function App() {
             </button>
           </form>
         </div>
-        <div className="mt-4">
-          {/* 
-           */ result}
-        </div>
+        <div className="mt-4">{result}</div>
       </section>
     </>
   );

@@ -9,7 +9,7 @@ const Card = (props) => {
         setChecked(!checked)
     }
     return (
-        <section className="mt-4">
+        <section className="mt-4 flex justify-between">
             <div className="flex items-center">
             <input className=""
             type="checkbox"
@@ -18,7 +18,8 @@ const Card = (props) => {
         </div>
 
         <img src="./trash-solid.svg"
-        className="w-12 border-2 border-teal-500 rounded-full p-2"
+        onClick={props.delete}
+        className="w-12 border-2  text-red-500 rounded-full p-2"
         alt="trash-icon"
         name = {props.id}
          />
