@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
@@ -6,8 +6,10 @@ import Card from "./Components/Card";
 import { Car } from "lucide-react";
 
 function App() {
+  const savedToDos = localStorage.getItem("todos")
+  const previousToDos = savedToDos ? JSON.parse(savedToDos) : []
   const [todo, setTodo] = useState("");
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(previousToDos);
   const result = todos.map((item, index) => (
     <Card
       key={item}
@@ -32,6 +34,10 @@ function App() {
   function handleDelete(id) {
     setTodos(todos.filter((item, index) => index !== id));
   }
+  useEffect(()=> {
+    localStorage.setItem("todos", JSON.stringify(todos))
+  }, [todos])
+  
   return (
     <>
       <section>
