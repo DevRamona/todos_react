@@ -19,8 +19,8 @@ const Card = (props) => {
             <input className=""
             type="checkbox"
             onChange = {checker}/>
-            <p className="text-2xl">
-                style = {checked ? styles : {}}
+            <p className="text-2xl font-serif" style = {checked ? styles : {}}>
+                
                 {props.text}</p>
         </div>
 
