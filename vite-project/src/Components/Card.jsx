@@ -1,13 +1,30 @@
-const Card = () => {
+import { useState } from "react"
+
+
+
+
+const Card = (props) => {
+    const [checked, setChecked] = useState(false)
+    function checker() {
+        setChecked(!checked)
+    }
     return (
-        <section>
-            <h1 className="text-blue-100 text-5xl font-bold text-center" >todos</h1>
-            <div>
-            <input placeholder="Add todo..." type="text" className="border rounded-2xl mt-4 p-3 w-10/12"/>
-            <button className="border px-3 bg-blue-200 rounded-3xl">+</button>
-            </div>
-           
+        <section className="mt-4">
+            <div className="flex items-center">
+            <input className=""
+            type="checkbox"
+            onChange = {checker}/>
+            <p className="text-2xl">{props.text}</p>
+        </div>
+
+        <img src="./trash-solid.svg"
+        className="w-12 border-2 border-teal-500 rounded-full p-2"
+        alt="trash-icon"
+        name = {props.id}
+         />
+        
         </section>
+        
     )
 }
 
